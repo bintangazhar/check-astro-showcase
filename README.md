@@ -30,10 +30,6 @@ astro-showcase --all
 ## Example Output
 
 ```
-mainbranch.dev                 | Page 29      | ✅ Uses Astro
-                                 └─ Generator meta: Astro v7.2.8
-                                 └─ Astro island/cid attributes found
-                                 └─ Astro asset prefix /_astro/ found
 bintang.me                     | Page 56      | ✅ Uses Astro
                                  └─ Astro island/cid attributes found
                                  └─ Astro asset prefix /_astro/ found
