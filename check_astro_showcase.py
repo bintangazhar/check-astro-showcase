@@ -20,6 +20,12 @@ try:
     import certifi
     os.environ.setdefault('SSL_CERT_FILE', certifi.where())
     os.environ.setdefault('REQUESTS_CA_BUNDLE', certifi.where())
+    # Ensure certifi is bundled by PyInstaller
+    import sys
+    if getattr(sys, 'frozen', False):
+        # Running in PyInstaller bundle
+        os.environ['SSL_CERT_FILE'] = certifi.where()
+        os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
 except ImportError:
     pass
 

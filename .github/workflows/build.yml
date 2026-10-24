@@ -35,7 +35,7 @@ jobs:
       
       - name: Build binary
         run: |
-          pyinstaller --onefile --name ${{ matrix.artifact }} check_astro_showcase.py
+          pyinstaller --onefile --name ${{ matrix.artifact }} --hidden-import=certifi check_astro_showcase.py
       
       - name: Upload artifact
         uses: actions/upload-artifact@v4
