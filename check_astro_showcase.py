@@ -4,30 +4,24 @@ Periodic checker for sites in Astro.build showcase.
 Checks which page a site appears on in https://astro.build/showcase/
 """
 
+# Fix SSL certs for PyInstaller - MUST be before any other imports
+import os
+import sys
+try:
+    import certifi
+    os.environ['SSL_CERT_FILE'] = certifi.where()
+    os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
+except ImportError:
+    pass
+
 import asyncio
 import aiohttp
 import argparse
 import json
-import sys
-import os
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 from urllib.parse import urlparse
-
-# Fix SSL certs for PyInstaller
-try:
-    import certifi
-    os.environ.setdefault('SSL_CERT_FILE', certifi.where())
-    os.environ.setdefault('REQUESTS_CA_BUNDLE', certifi.where())
-    # Ensure certifi is bundled by PyInstaller
-    import sys
-    if getattr(sys, 'frozen', False):
-        # Running in PyInstaller bundle
-        os.environ['SSL_CERT_FILE'] = certifi.where()
-        os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
-except ImportError:
-    pass
 
 
 class AstroShowcaseChecker:
