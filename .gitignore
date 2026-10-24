@@ -1,0 +1,25 @@
+# Build artifacts
+dist/
+build/
+
+# PyInstaller
+*.spec
+
+# Cache
+showcase_cache.json
+
+# Virtual environment
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
