@@ -18,7 +18,7 @@ pip install -r requirements.txt  # or: pip install aiohttp
 
 ```bash
 # Check specific sites + verify Astro usage
-astro-showcase mainbranch.dev bintang.me nusantarapost.news --check-astro
+astro-showcase bintang.me nusantarapost.news --check-astro
 
 # Output as JSON
 astro-showcase site1.com site2.com --check-astro --output json
