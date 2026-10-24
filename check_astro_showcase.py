@@ -9,10 +9,19 @@ import aiohttp
 import argparse
 import json
 import sys
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 from urllib.parse import urlparse
+
+# Fix SSL certs for PyInstaller
+try:
+    import certifi
+    os.environ.setdefault('SSL_CERT_FILE', certifi.where())
+    os.environ.setdefault('REQUESTS_CA_BUNDLE', certifi.where())
+except ImportError:
+    pass
 
 
 class AstroShowcaseChecker:
