@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install astro-showcase to ~/.local/bin
+# Install astro-showcase wrapper to ~/.local/bin using uv
 
 set -euo pipefail
 
@@ -7,15 +7,15 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TARGET_DIR="$HOME/.local/bin"
 TARGET_PATH="$TARGET_DIR/astro-showcase"
 
-if [[ ! -d "$TARGET_DIR" ]]; then
-    echo "Creating $TARGET_DIR"
-    mkdir -p "$TARGET_DIR"
-else
-    echo "$TARGET_DIR already exists"
-fi
+# Ensure dependencies are synced
+uv sync --directory "$SCRIPT_DIR"
 
-# Copy the wrapper script
-cp "$SCRIPT_DIR/astro-showcase" "$TARGET_PATH"
+# Write wrapper script with absolute path to source directory
+mkdir -p "$TARGET_DIR"
+cat > "$TARGET_PATH" << EOF
+#!/usr/bin/env bash
+exec uv run --directory "$SCRIPT_DIR" python "$SCRIPT_DIR/check_astro_showcase.py" "\$@"
+EOF
 chmod +x "$TARGET_PATH"
 
 echo "Installed astro-showcase to $TARGET_PATH"
