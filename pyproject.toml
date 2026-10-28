@@ -11,9 +11,6 @@ dependencies = [
   "certifi>=2026.10.23",
 ]
 
-[project.scripts]
-astro-showcase = "check_astro_showcase:main"
-
 [dependency-groups]
 dev = ["pyinstaller>=6.0"]
 
