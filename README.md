@@ -11,7 +11,7 @@ CLI tool to check which page a site appears on in [Astro.build Showcase](https:/
 ```bash
 git clone https://github.com/bintangazhar/check-astro-showcase.git
 cd check-astro-showcase
-pip install -r requirements.txt  # or: pip install aiohttp
+uv sync  # or: uv pip install aiohttp certifi
 ```
 
 ## Usage
